@@ -1,9 +1,10 @@
 import React from 'react';
+import HeroSlider from '../Shared/HeroSlider';
 
 const Home = () => {
     return (
         <div>
-            Home
+           <HeroSlider></HeroSlider>
         </div>
     );
 };

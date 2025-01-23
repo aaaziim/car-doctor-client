@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Logo from "../../assets/logo.svg"
 
+
 const Header = () => {
     const NavItems = <>
      <li><Link to ="/" > Home</Link></li>
@@ -43,7 +44,7 @@ const Header = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <Link to="/" className="btn btn-primary" > Appointment </Link>
+          <Link to="/" className="btn btn-warning btn-outline" > Appointment </Link>
 
          
         </div>
