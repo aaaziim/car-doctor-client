@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { AuthContext } from '../../Provider/AuthProvider';
 
 const Checkout = () => {
     const { id } = useParams(); 
+      const { user } = useContext(AuthContext);
+    
     const [service, setService] = useState(null); // Initialize as null
 
     useEffect(() => {
@@ -24,11 +27,12 @@ const Checkout = () => {
         const email = form.email.value;
         const date = form.date.value;
         const price = form.price.value;
+        const img = service.img;
 
-        fetch("http://localhost:5000/services/", {
+        fetch("http://localhost:5000/bookings/", {
             method: 'POST',
             headers: {'content-type': 'application/json'},
-            body: JSON.stringify({title, email, date, price})
+            body: JSON.stringify({title,img, email, date, price})
         }).then((res) => {
             if (res.ok) {
                 return res.json();
@@ -63,7 +67,7 @@ const Checkout = () => {
                     className="p-2 rounded-xl" 
                     defaultValue={service.title || ''} name='title' // Provide a fallback to avoid errors
                 />
-                <input type="text" placeholder="Email" className="p-2 rounded-xl" name='email' />
+                <input type="text" placeholder="Email" className="p-2 rounded-xl" name='email' defaultValue={user.email} />
                 <input type="date" className="p-2 rounded-xl" name='date' />
                 <input type="text" placeholder='Price' defaultValue={service.price} className="p-2 rounded-xl" name='price' />
                 <input type="submit" value="Order" className="col-span-2 btn" />

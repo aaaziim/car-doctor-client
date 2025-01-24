@@ -18,9 +18,15 @@ const Header = () => {
   
     const NavItems = <>
      <li><Link to ="/" > Home</Link></li>
-     <li><Link to ="/" > My Bookings</Link></li>
+     
     
-     {user?  <li><Link to ="/" onClick={handleLogOut} > Logout</Link></li>:<li><Link to ="/login" > Login</Link></li>}
+     {user?  
+     <>
+     <li><Link to ="/mybookings" > My Bookings</Link></li>
+     <li><Link to ="/" onClick={handleLogOut} > Logout</Link></li>
+</>
+     :
+     <li><Link to ="/login" > Login</Link></li>}
     </>
     return (
         <div className="navbar bg-base-100 shadow-sm">
