@@ -28,7 +28,7 @@ import PrivateRoute from './PrivateRoute';
                 },
                 {
                     path: "/checkout/:id",
-                    element:<Checkout></Checkout>
+                    element:<PrivateRoute><Checkout></Checkout></PrivateRoute>
                 },
                 {
                     path: "/mybookings",
